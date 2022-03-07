@@ -11,7 +11,7 @@ def booleanlist(value):
     return list
 
 def create(function):
-    variabels={}
+    variables={}
     function=function.replace("(", " ( ")
     function=function.replace(")", " ) ")
     clean=function.strip().split(" ",-1)
@@ -34,18 +34,18 @@ def create(function):
             clean.remove("placeholder")
     for i in range(len(clean)):
         clean[i]=" "+clean[i]+" "
-        variabels[clean[i]]=0
+        variables[clean[i]]=0
     newfunction=" "+function+" " 
-    for i in range(len(variabels)):
-        newfunction=newfunction.replace(str(list(variabels.keys())[i])," int(list(variabels.values())["+str(i)+"]) ")  
+    for i in range(len(variables)):
+        newfunction=newfunction.replace(str(list(variables.keys())[i])," int(list(variables.values())["+str(i)+"]) ")  
     print("Function: "+function)
     print("New function:"+newfunction)
     try:
-        for i in range(len(booleanlist(len(variabels)))):
-            for j in range(len(variabels)):
-                variabels[clean[j]]=int(booleanlist(len(variabels))[i][j])
+        for i in range(len(booleanlist(len(variables)))):
+            for j in range(len(variables)):
+                variables[[x for x in variables][j]]=int(booleanlist(len(variables))[i][j])
             result=int(eval(newfunction))
-            print(variabels,"Result:",result)
+            print(variables,"Result:",result)
     except SyntaxError:
         print("Syntax Error (Wrong input) - Calculation aborted")
 
