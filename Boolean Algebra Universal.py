@@ -1,20 +1,20 @@
-def binärliste(wert):
-    liste=[]
-    endzahl=2**wert
-    zeichenanzahl=len(bin(endzahl-1))-2
-    for i in range(endzahl):
-        binärzahl=bin(i)        
-        binärzahl_sauber=binärzahl[2:]
-        fehlende_nullen=zeichenanzahl-len(binärzahl_sauber)
-        binärzahl_sauber=fehlende_nullen*"0"+binärzahl_sauber
-        liste.append(binärzahl_sauber)
-    return liste
+def booleanlist(value):
+    list=[]
+    endnumber=2**value
+    character_count=len(bin(endnumber-1))-2
+    for i in range(endnumber):
+        binary_number=bin(i)        
+        binary_number_clean=binary_number[2:]
+        missing_zeros=character_count-len(binary_number_clean)
+        binary_number_clean=missing_zeros*"0"+binary_number_clean
+        list.append(binary_number_clean)
+    return list
 
-def create(funktion):
-    variabeln={}
-    funktion=funktion.replace("(", " ( ")
-    funktion=funktion.replace(")", " ) ")
-    clean=funktion.strip().split(" ",-1)
+def create(function):
+    variabels={}
+    function=function.replace("(", " ( ")
+    function=function.replace(")", " ) ")
+    clean=function.strip().split(" ",-1)
     for i in range(len(clean)):
         if "and" in clean:
             clean.remove("and") 
@@ -34,24 +34,24 @@ def create(funktion):
             clean.remove("placeholder")
     for i in range(len(clean)):
         clean[i]=" "+clean[i]+" "
-        variabeln[clean[i]]=0
-    newfunktion=" "+funktion+" " 
-    for i in range(len(variabeln)):
-        newfunktion=newfunktion.replace(str(list(variabeln.keys())[i])," int(list(variabeln.values())["+str(i)+"]) ")  
-    print("Funktion: "+funktion)
-    print("Neue Funktion:"+newfunktion)
+        variabels[clean[i]]=0
+    newfunction=" "+function+" " 
+    for i in range(len(variabels)):
+        newfunction=newfunction.replace(str(list(variabels.keys())[i])," int(list(variabels.values())["+str(i)+"]) ")  
+    print("Function: "+function)
+    print("New function:"+newfunction)
     try:
-        for i in range(len(binärliste(len(variabeln)))):
-            for j in range(len(variabeln)):
-                variabeln[clean[j]]=int(binärliste(len(variabeln))[i][j])
-            ergebnis=int(eval(newfunktion))
-            print(variabeln,"Ergebnis:",ergebnis)
+        for i in range(len(booleanlist(len(variabels)))):
+            for j in range(len(variabels)):
+                variabels[clean[j]]=int(booleanlist(len(variabels))[i][j])
+            result=int(eval(newfunction))
+            print(variabels,"Result:",result)
     except SyntaxError:
-        print("Syntax Error (Falsche Eingabe) - Berechnung abgebrochen")
+        print("Syntax Error (Wrong input) - Calculation aborted")
 
 while True:
-    f=input("Eingabe der Funktion: ")
+    f=input("Enter the function: ")
     if f == "break":
-        print("Programm beendet")
+        print("program ended")
         break
     create(f)
