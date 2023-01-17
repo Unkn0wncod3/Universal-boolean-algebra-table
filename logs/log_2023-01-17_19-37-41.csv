@@ -1,0 +1,18 @@
+
+ a ; b ;Result;Function
+0;0;0;a and b
+0;1;0;a and b
+1;0;0;a and b
+1;1;1;a and b
+
+ a ; b ;Result;Function
+0;0;0;a or b
+0;1;1;a or b
+1;0;1;a or b
+1;1;1;a or b
+
+ a ; b ;Result;Function
+0;0;1;a  ->  b
+0;1;1;a  ->  b
+1;0;0;a  ->  b
+1;1;1;a  ->  b
